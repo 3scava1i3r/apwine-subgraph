@@ -2,39 +2,62 @@ specVersion: 0.0.4
 schema:
   file: ./schema.graphql
 dataSources:
+  - kind: ethereum/contract
+    name: ProxyController
+    network: mainnet
+    source:
+      address: "0x4bA30FA240047c17FC557b8628799068d4396790"
+      abi: Proxycontroller
+      startBlock: 13858333
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Upgraded
+      abis:
+        - name: Proxycontroller
+          file: ./abis/Proxycontroller.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+      file: ./src/proxycontroller.ts
+templates:
   - kind: ethereum
     name: Controller
     network: mainnet
     source:
-      address: "0x6f89bB50C6cd4Ad9FBAb0324E742C50496fF00A2"
-      abi: Apwine
-      startBlock: 13947091
+      abi: Controller
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - DelegationPauseChanged
-        - DepositPauseChanged
-        - FutureRegistered
-        - FutureSetToBeTerminated
-        - FutureTerminated
-        - FutureUnregistered
-        - NewPerformanceFeeFactor
-        - NewPeriodDurationIndexSet
-        - NextPeriodSwitchSet
-        - PeriodSwitchedByDurationDisabled
-        - RegistryChanged
-        - RoleAdminChanged
-        - RoleGranted
-        - RoleRevoked
-        - StartingDelaySet
-        - WithdrawalPauseChanged
+        # - DelegationPauseChanged
+        # - DepositPauseChanged
+        # - FutureRegistered
+        # - FutureSetToBeTerminated
+        # - FutureTerminated
+        # - FutureUnregistered
+        # - NewPerformanceFeeFactor
+        # - NewPeriodDurationIndexSet
+        # - NextPeriodSwitchSet
+        # - PeriodSwitchedByDurationDisabled
+        # - RegistryChanged
+        # - RoleAdminChanged
+        # - RoleGranted
+        # - RoleRevoked
+        # - StartingDelaySet
+        # - WithdrawalPauseChanged
         - User
-        - Future
+        - FutureVault
       abis:
-        - name: Apwine
-          file: ./abis/Apwine.json
+        - name: Controller
+          file: ./abis/Controller.json
       eventHandlers:
         - event: DelegationPauseChanged(bool)
           handler: handleDelegationPauseChanged
@@ -68,4 +91,4 @@ dataSources:
           handler: handleStartingDelaySet
         - event: WithdrawalPauseChanged(address,bool)
           handler: handleWithdrawalPauseChanged
-      file: ./src/apwine.ts
+      file: ./src/Controller.ts

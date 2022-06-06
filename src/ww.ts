@@ -34,6 +34,7 @@ import {
   StartingDelaySet,
   WithdrawalPauseChanged
 } from "../generated/schema"
+import {FutureVault} from "../generated/schema"
 
 export function handleDelegationPauseChanged(
   event: DelegationPauseChangedEvent
@@ -57,6 +58,9 @@ export function handleDepositPauseChanged(
 }
 
 export function handleFutureRegistered(event: FutureRegisteredEvent): void {
+  
+  // let entity2 = new FutureVault(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
+  // entity2.save()
   let entity = new FutureRegistered(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
