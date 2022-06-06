@@ -10,7 +10,6 @@ export function handleFutureRegistered(event: FutureRegisteredEvent): void {
     let entity = new FutureVault(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
     entity.address = event.params._futureVault
     entity.save()
-
     
 }
 

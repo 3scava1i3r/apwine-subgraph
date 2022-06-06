@@ -15,6 +15,7 @@ import {
 
     Controller.create(event.params.implementation)
     
+    
   }
   
   export function handleAdminChanged(event: AdminChangedEvent): void {
