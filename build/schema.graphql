@@ -1,0 +1,99 @@
+type DelegationPauseChanged @entity {
+  id: ID!
+  _delegationPaused: Boolean! # bool
+}
+
+type DepositPauseChanged @entity {
+  id: ID!
+  _futureVault: Bytes! # address
+  _depositPaused: Boolean! # bool
+}
+
+type FutureRegistered @entity {
+  id: ID!
+  _futureVault: Bytes! # address
+}
+
+type FutureSetToBeTerminated @entity {
+  id: ID!
+  _futureVault: Bytes! # address
+}
+
+type FutureTerminated @entity {
+  id: ID!
+  _futureVault: Bytes! # address
+}
+
+type FutureUnregistered @entity {
+  id: ID!
+  _futureVault: Bytes! # address
+}
+
+type NewPerformanceFeeFactor @entity {
+  id: ID!
+  _futureVault: Bytes! # address
+  _feeFactor: BigInt! # uint256
+}
+
+type NewPeriodDurationIndexSet @entity {
+  id: ID!
+  _periodIndex: BigInt! # uint256
+}
+
+type NextPeriodSwitchSet @entity {
+  id: ID!
+  _periodDuration: BigInt! # uint256
+  _nextSwitchTimestamp: BigInt! # uint256
+}
+
+type PeriodSwitchedByDurationDisabled @entity {
+  id: ID!
+  _periodDuration: BigInt! # uint256
+  _periodIndex: BigInt! # uint256
+}
+
+type RegistryChanged @entity {
+  id: ID!
+  _registry: Bytes! # address
+}
+
+type RoleAdminChanged @entity {
+  id: ID!
+  role: Bytes! # bytes32
+  previousAdminRole: Bytes! # bytes32
+  newAdminRole: Bytes! # bytes32
+}
+
+type RoleGranted @entity {
+  id: ID!
+  role: Bytes! # bytes32
+  account: Bytes! # address
+  sender: Bytes! # address
+}
+
+type RoleRevoked @entity {
+  id: ID!
+  role: Bytes! # bytes32
+  account: Bytes! # address
+  sender: Bytes! # address
+}
+
+type StartingDelaySet @entity {
+  id: ID!
+  _startingDelay: BigInt! # uint256
+}
+
+type WithdrawalPauseChanged @entity {
+  id: ID!
+  _futureVault: Bytes! # address
+  _withdrawalPaused: Boolean! # bool
+}
+
+
+type User @entity {
+  id: ID!
+}
+
+type Future @entity {
+  id: ID!
+}

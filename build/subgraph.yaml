@@ -1,0 +1,71 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Controller
+    network: mainnet
+    source:
+      address: "0x4bA30FA240047c17FC557b8628799068d4396790"
+      abi: Apwine
+      startBlock: 13947091
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - DelegationPauseChanged
+        - DepositPauseChanged
+        - FutureRegistered
+        - FutureSetToBeTerminated
+        - FutureTerminated
+        - FutureUnregistered
+        - NewPerformanceFeeFactor
+        - NewPeriodDurationIndexSet
+        - NextPeriodSwitchSet
+        - PeriodSwitchedByDurationDisabled
+        - RegistryChanged
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - StartingDelaySet
+        - WithdrawalPauseChanged
+        - User
+        - Future
+      abis:
+        - name: Apwine
+          file: Controller/abis/Apwine.json
+      eventHandlers:
+        - event: DelegationPauseChanged(bool)
+          handler: handleDelegationPauseChanged
+        - event: DepositPauseChanged(address,bool)
+          handler: handleDepositPauseChanged
+        - event: FutureRegistered(address)
+          handler: handleFutureRegistered
+        - event: FutureSetToBeTerminated(address)
+          handler: handleFutureSetToBeTerminated
+        - event: FutureTerminated(address)
+          handler: handleFutureTerminated
+        - event: FutureUnregistered(address)
+          handler: handleFutureUnregistered
+        - event: NewPerformanceFeeFactor(address,uint256)
+          handler: handleNewPerformanceFeeFactor
+        - event: NewPeriodDurationIndexSet(uint256)
+          handler: handleNewPeriodDurationIndexSet
+        - event: NextPeriodSwitchSet(uint256,uint256)
+          handler: handleNextPeriodSwitchSet
+        - event: PeriodSwitchedByDurationDisabled(uint256,uint256)
+          handler: handlePeriodSwitchedByDurationDisabled
+        - event: RegistryChanged(address)
+          handler: handleRegistryChanged
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: StartingDelaySet(uint256)
+          handler: handleStartingDelaySet
+        - event: WithdrawalPauseChanged(address,bool)
+          handler: handleWithdrawalPauseChanged
+      file: Controller/Controller.wasm
