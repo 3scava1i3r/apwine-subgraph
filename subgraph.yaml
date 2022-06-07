@@ -11,7 +11,7 @@ dataSources:
       startBlock: 13858333
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.6
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
         - Upgraded
@@ -19,76 +19,106 @@ dataSources:
         - name: Proxycontroller
           file: ./abis/Proxycontroller.json
       eventHandlers:
-        - event: AdminChanged(address,address)
-          handler: handleAdminChanged
-        - event: BeaconUpgraded(indexed address)
-          handler: handleBeaconUpgraded
-        - event: Upgraded(indexed address)
-          handler: handleUpgraded
-      file: ./src/proxycontroller.ts
-templates:
-  - kind: ethereum
-    name: Controller
-    network: mainnet
-    source:
-      abi: Controller
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.6
-      language: wasm/assemblyscript
-      entities:
-        # - DelegationPauseChanged
-        # - DepositPauseChanged
-        # - FutureRegistered
-        # - FutureSetToBeTerminated
-        # - FutureTerminated
-        # - FutureUnregistered
-        # - NewPerformanceFeeFactor
-        # - NewPeriodDurationIndexSet
-        # - NextPeriodSwitchSet
-        # - PeriodSwitchedByDurationDisabled
-        # - RegistryChanged
-        # - RoleAdminChanged
-        # - RoleGranted
-        # - RoleRevoked
-        # - StartingDelaySet
-        # - WithdrawalPauseChanged
-        - User
-        - FutureVault
-      abis:
-        - name: Controller
-          file: ./abis/Controller.json
-      eventHandlers:
-        - event: DelegationPauseChanged(bool)
-          handler: handleDelegationPauseChanged
-        - event: DepositPauseChanged(address,bool)
-          handler: handleDepositPauseChanged
+
+        # - event: DelegationPauseChanged(bool)
+        #   handler: handleDelegationPauseChanged
+        # - event: DepositPauseChanged(address,bool)
+        #   handler: handleDepositPauseChanged
         - event: FutureRegistered(address)
           handler: handleFutureRegistered
-        - event: FutureSetToBeTerminated(address)
-          handler: handleFutureSetToBeTerminated
-        - event: FutureTerminated(address)
-          handler: handleFutureTerminated
-        - event: FutureUnregistered(address)
-          handler: handleFutureUnregistered
-        - event: NewPerformanceFeeFactor(address,uint256)
-          handler: handleNewPerformanceFeeFactor
-        - event: NewPeriodDurationIndexSet(uint256)
-          handler: handleNewPeriodDurationIndexSet
+        # - event: FutureSetToBeTerminated(address)
+        #   handler: handleFutureSetToBeTerminated
+        # - event: FutureTerminated(address)
+        #   handler: handleFutureTerminated
+        # - event: FutureUnregistered(address)
+        #   handler: handleFutureUnregistered
+        # - event: NewPerformanceFeeFactor(address,uint256)
+        #   handler: handleNewPerformanceFeeFactor
+        # - event: NewPeriodDurationIndexSet(uint256)
+        #   handler: handleNewPeriodDurationIndexSet
         - event: NextPeriodSwitchSet(uint256,uint256)
           handler: handleNextPeriodSwitchSet
-        - event: PeriodSwitchedByDurationDisabled(uint256,uint256)
-          handler: handlePeriodSwitchedByDurationDisabled
-        - event: RegistryChanged(address)
-          handler: handleRegistryChanged
-        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
-          handler: handleRoleAdminChanged
-        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleGranted
-        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleRevoked
+        # - event: PeriodSwitchedByDurationDisabled(uint256,uint256)
+        #   handler: handlePeriodSwitchedByDurationDisabled
+        # - event: RegistryChanged(address)
+        #   handler: handleRegistryChanged
+        # - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+        #   handler: handleRoleAdminChanged
+        # - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+        #   handler: handleRoleGranted
+        # - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+        #   handler: handleRoleRevoked
         - event: StartingDelaySet(uint256)
           handler: handleStartingDelaySet
-        - event: WithdrawalPauseChanged(address,bool)
-          handler: handleWithdrawalPauseChanged
-      file: ./src/Controller.ts
+        # - event: WithdrawalPauseChanged(address,bool)
+        #   handler: handleWithdrawalPauseChanged
+
+      file: ./src/proxycontroller.ts
+# templates:
+#   - kind: ethereum
+#     name: Controller
+#     network: mainnet
+#     source:
+#       abi: Controller
+#     mapping:
+#       kind: ethereum/events
+#       apiVersion: 0.0.6
+#       language: wasm/assemblyscript
+#       entities:
+#         - DelegationPauseChanged
+#         - DepositPauseChanged
+#         - FutureRegistered
+#         - FutureSetToBeTerminated
+#         - FutureTerminated
+#         - FutureUnregistered
+#         - NewPerformanceFeeFactor
+#         - NewPeriodDurationIndexSet
+#         - NextPeriodSwitchSet
+#         - PeriodSwitchedByDurationDisabled
+#         - RegistryChanged
+#         - RoleAdminChanged
+#         - RoleGranted
+#         - RoleRevoked
+#         - StartingDelaySet
+#         - WithdrawalPauseChanged
+#         - User
+#         - FutureVault
+#       abis:
+#         - name: Controller
+#           file: ./abis/Controller.json
+#         - name: ProxyController
+#           file: ./abis/Proxycontroller.json
+#       eventHandlers:
+#         - event: DelegationPauseChanged(bool)
+#           handler: handleDelegationPauseChanged
+#         - event: DepositPauseChanged(address,bool)
+#           handler: handleDepositPauseChanged
+#         - event: FutureRegistered(address)
+#           handler: handleFutureRegistered
+#         - event: FutureSetToBeTerminated(address)
+#           handler: handleFutureSetToBeTerminated
+#         - event: FutureTerminated(address)
+#           handler: handleFutureTerminated
+#         - event: FutureUnregistered(address)
+#           handler: handleFutureUnregistered
+#         - event: NewPerformanceFeeFactor(address,uint256)
+#           handler: handleNewPerformanceFeeFactor
+#         - event: NewPeriodDurationIndexSet(uint256)
+#           handler: handleNewPeriodDurationIndexSet
+#         - event: NextPeriodSwitchSet(uint256,uint256)
+#           handler: handleNextPeriodSwitchSet
+#         - event: PeriodSwitchedByDurationDisabled(uint256,uint256)
+#           handler: handlePeriodSwitchedByDurationDisabled
+#         - event: RegistryChanged(address)
+#           handler: handleRegistryChanged
+#         - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+#           handler: handleRoleAdminChanged
+#         - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+#           handler: handleRoleGranted
+#         - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+#           handler: handleRoleRevoked
+#         - event: StartingDelaySet(uint256)
+#           handler: handleStartingDelaySet
+#         - event: WithdrawalPauseChanged(address,bool)
+#           handler: handleWithdrawalPauseChanged
+#       file: ./src/Controller.ts

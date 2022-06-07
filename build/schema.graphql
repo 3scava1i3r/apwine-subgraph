@@ -98,10 +98,17 @@ type User @entity {
 
 type FutureVault @entity {
   id: ID!
+  address: Bytes!
   
 }
 
-type Upgraded @entity {
+# type Upgraded @entity {
+#   id: ID!
+#   implementation: Bytes!
+# }
+
+
+type Period @entity {
   id: ID!
-  implementation: Bytes!
+  NextPeriodSwitchSet: BigInt!
 }
